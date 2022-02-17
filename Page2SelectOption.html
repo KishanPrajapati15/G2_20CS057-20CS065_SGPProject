@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Hostel & Transport</title>
+    <!-- applying css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 219, 248, 0.952),rgba(0, 219, 248, 0.541));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #content {
+            background-color: rgba(45, 171, 202, 0.856);
+            padding: 40px 40px 40px 40px;
+            box-shadow: 0 5px 16px -8px black;
+            border-radius: 11px;
+        }
+
+
+        button {
+            color: rgba(19, 11, 19, 0.774);
+            border-radius: 7px;
+            padding: 10px 20px 20px 20px;
+            margin-bottom: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+            background-color: #f0f0e9;
+            cursor: pointer;
+            width: 250px;
+            box-shadow: 0 9px 16px -8px black;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: rgb(214, 216, 191);
+        }
+
+        h3 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            font-weight: lighter;
+            font-size: 23px;
+            letter-spacing: 1px;
+            color: rgba(15, 9, 9, 0.781);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <h3>Select option &#8595</h3>
+        <hr><br><br>
+        <!--creating buttons with respective functions-->
+        <button onclick="myfunction();">Hostel</button> <br>
+        <button onclick="myfunction1();">Transport</button> <br>     
+        <button onclick="myfunction2();">Student</button>
+    </div>
+
+    <script>
+        //functions for page redirection
+        function myfunction() {
+            window.location = "";
+        }
+        function myfunction1() {
+            window.location = "AddTransport.html";
+        }       
+        function myfunction2() {
+            window.location = "";
+        }
+
+    </script>
+</body>
+
+</html>
