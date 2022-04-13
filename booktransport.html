@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Univ Transport </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- Applying css to fields -->
+    <style>
+        body {
+            background-color: rgba(71, 218, 255, 0.74);
+
+        }
+
+        .main {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', cursive;
+            color: rgba(14, 13, 13, 0.61);
+            letter-spacing: 2px;
+            font-size: 30px;
+        }
+
+        input {
+            width: 40%;
+            height: 10%;
+            margin: 1em;
+            padding: 1em;
+            outline: none;
+            border-radius: 5px;
+            border: thin solid skyblue;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.616);
+            background-color: rgba(168, 141, 141, 0.356);
+            color: white;
+        }
+
+        ::-webkit-input-placeholder {
+            /* Edge */
+            color: white;
+        }
+
+        :-ms-input-placeholder {
+            /* Internet Explorer */
+            color: white;
+        }
+
+        ::placeholder {
+            color: white;
+        }
+
+        label {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: justify;
+            margin-right: 8px;
+            padding-left: 5px;
+            padding-bottom: 4px;
+            padding-right: 10px;
+            color: white;
+            box-shadow: -4px 4px rgba(66, 55, 55, 0.849);
+            border-radius: 3px;
+
+        }
+
+        #tname {
+            background-color: rgba(168, 141, 141, 0.356);
+            border-radius: 3px;
+            border-width: 2px;
+            box-shadow: 6px 6px 6px rgba(168, 141, 141, 0.356);
+        }
+
+        #Submit {
+
+            padding: 1.5em 3em;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 1em;
+            border-radius: 5px;
+            border: white thin;
+            background-color: rgb(18, 187, 108);
+            color: white;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.616);
+
+        }
+
+        #Submit:hover {
+            background-color: rgb(14, 230, 122);
+            cursor: pointer;
+        }
+
+        #Submit:active {
+            background-color: rgb(60, 130, 200);
+        }
+
+        #Delete {
+            padding: 1em 2.5em;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 1em;
+            border-radius: 5px;
+            border: white thin;
+            background-color: rgb(219, 30, 30);
+            color: white;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.616);
+        }
+
+        #Delete:hover {
+            background-color: rgb(162, 30, 30);
+            ;
+            cursor: pointer;
+        }
+
+        #Delete:active {
+            background-color: rgb(212, 92, 92);
+        }
+
+        #feedback {
+            padding: 1em 2.5em;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 1em;
+            border-radius: 5px;
+            border: white thin;
+            background-color: rgb(30, 128, 219);
+            color: white;
+            box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.616);
+        }
+
+        #feedback:hover {
+            background-color: rgba(42, 111, 207, 0.735);
+            ;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="main">
+
+            <h2>Book Transport</h2>
+
+            <!-- Textboxes to add details -->
+            <div><input id="id" type="text" placeholder="Student's ID" required></div>
+            <div><input id="name" type="text" placeholder="Student's Full Name" required></div>
+            <div><input id="travelsName" type="text" placeholder="Enter travels name" required></div>
+            <label id="labelsty">Select travels name</label>
+            <select name="" id="tname">
+                <option value="brahmani">Brahmani</option>
+                <option value="bansari">Bansari</option>
+            </select>
+            <div><input id="location" type="text" placeholder="Enter destination area name" required></div>
+            <div><input id="city" type="text" placeholder="Enter city" required></div>
+            <div><input id="duration" type="text" placeholder="Enter duration(eg- one to and fro journey)" required>
+            </div>
+            <div><input id="datee" type="date" placeholder="Enter date" required></div>
+            <div><input id="payment" type="text" placeholder="Enter payment details(cash/online payment)" required>
+            </div>
+            <div><input id="paystatus" type="text" placeholder="Enter payment status (done/pending)" required></div>
+            <div><input id="contact" type="text" placeholder="Enter your contact details" required></div>
+            <div><button id="Submit">Submit/Update</button></div>
+            <div><button id="Delete">Delete Booking</button></div>
+            <div><button id="feedback" onclick="myfunction();">Give feedback</button></div>
+
+            <!-- importing firebase -->
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
+
+                // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyAGCxYPsLRCaOhR7ukccLbdJVwplVpzrHM",
+                    authDomain: "booktransport-d6403.firebaseapp.com",
+                    databaseURL: "https://booktransport-d6403-default-rtdb.firebaseio.com",
+                    projectId: "booktransport-d6403",
+                    storageBucket: "booktransport-d6403.appspot.com",
+                    messagingSenderId: "750729070485",
+                    appId: "1:750729070485:web:63ebf5424c414a7d7fd89c"
+                };
+
+
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+
+
+                import { getDatabase, ref, get, set, child, update, remove }
+                    from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+                const db = getDatabase();
+
+                //variables to store entered data;
+                var ID = document.getElementById("id");
+                var NAME = document.getElementById("name");
+                var TRAVELSNAME = document.getElementById("travelsName");
+                var TNAME = document.getElementById("tname");
+                var LOCATION = document.getElementById("location");
+                var CITY = document.getElementById("city");
+                var DURATION = document.getElementById("duration");
+                var DATEE = document.getElementById("datee");
+                var PAYMENT = document.getElementById("payment");
+                var PAYSTATUS = document.getElementById("paystatus");
+                var CONTACT = document.getElementById("contact");
+
+                var submit = document.getElementById("Submit");
+                var del = document.getElementById("Delete");
+
+                // function to get all the data
+                function getdata() {
+                    set(ref(db, "TheStudents/" + ID.value),
+                        {
+                            Id: ID.value,
+                            Name: NAME.value,
+                            Travelsname: TRAVELSNAME.value,
+                            Tname: TNAME.value,
+                            Location: LOCATION.value,
+                            City: CITY.value,
+                            Duration: DURATION.value,
+                            Datee: DATEE.value,
+                            Payment: PAYMENT.value,
+                            Paystatus: PAYSTATUS.value,
+                            Contact: CONTACT.value
+                        })
+                        .then(() => {
+                            alert("Booked !");
+                        })
+                        .catch((error) => {
+                            alert("unsuccessfil,error" + error);
+                        });
+
+                }
+                // function to delete data
+                function DeleteData() {
+                    remove(ref(db, "TheStudents/" + ID.value))
+                        .then(() => {
+                            alert("data removed succesfully");
+                        })
+                        .catch((error) => {
+                            alert("unsuccessfil,error" + error);
+                        });
+
+                }
+
+                // giving buttons respective actions
+                submit.addEventListener('click', getdata);
+                del.addEventListener('click', DeleteData);
+            </script>
+            <script>
+                function myfunction() {
+                    window.location = "ReviewPage.html";
+                }
+            </script>
+</body>
+
+</html>

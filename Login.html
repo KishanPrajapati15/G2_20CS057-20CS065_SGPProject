@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>University Transport </title>
+         <!-- Cool Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+        <!-- Our stylesheet -->
+        <link rel="stylesheet" type="text/css" href="Login.css">
+    </head>
+    <body>
+         <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+            <!-- // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-database.js"></script>
+        <div id="content_container">
+            
+            <div id="form_container">
+                <div id="form_header_container">
+                    <h2 id="form_header"> Transport Authority Login </h2>
+                </div>
+
+                <div id="form_content_container">
+                    <div id="form_content_inner_container">
+                        <!-- <input type="text" id="full_name" placeholder="Full name"> -->
+                        <input type="email" id="email" placeholder="Email">
+                        <input type="password" id="password" placeholder="New Password">
+
+                        <!-- <input type="text" id="mobile_number" placeholder="Mobile Number">
+                        <input type="text" id="Are_you_human" placeholder="Are you a human?(Yes/No)"> -->
+
+                        <div id="button_container">
+                            <button onclick="login() " style="text-align: center;">Login</button>
+                              <!-- <button onclick="register()">Register</button>  -->
+                              <!-- email - transport1@gmail.com , pass- trans12345 -->
+                        </div> <br>
+                        <!-- <h5> In case of any Login issues, Mail us at:</h5> 
+                        <h5>"20cs065@charusat.edu.in" or </h5>
+                        <h5>"20cs070@charusat.edu.in" or</h5>
+                        <h5>"20cs088@charusat.edu.in"</h5> -->
+                        <!-- <details>
+                            <summary>Issues in login ?</summary>
+                            <p>Mail us at - <br> 20cs065@charusat.edu.in or <br> 20cs057@charusat.edu.in</p>
+                        </details> -->
+                        <div id="my"class="myDIV" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; justify-content: center; text-align: center;" >Issues in login?</div>
+                        <div class="hide">Mail us at: 20cs065@charusat.edu.in or 20cs057@charusat.edu.in </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script src="Login.js"></script>
+
+</html>

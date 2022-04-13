@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Transport</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Applying css  -->
+    <style>
+        body {
+            background-color: rgba(45, 171, 202, 0.856);
+        }
+
+        h2 {
+            margin-top: 10px;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgba(20, 15, 15, 0.712);
+            text-shadow: 5px 5px rgb(243, 243, 239);
+            letter-spacing: 1px;
+            padding-bottom: 12px;
+            padding-top: 10px;
+        }
+        button {
+            color: rgb(19, 11, 19);
+            border-radius: 7px;
+            padding: 10px 20px 20px 20px;
+            /* margin-left: 30px;
+            margin-right: 30px; */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+            background-color: #1075a4b3;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 16px -8px black;
+        }
+
+        button:hover {
+            background-color: thistle;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student booking details</h2>
+    <div class="container mt-3">
+        <table class="table table-dark">
+            <!-- Declaring header of table -->
+            <thead>
+                <th>Sno</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Travels name</th>
+                <th>Tname</th>
+                <th>Destination area</th>
+                <th>City</th>
+                <th>Duration</th>
+                <th>Date</th>
+                <th>Payment Details</th>
+                <th>Payment status</th>
+                <th>Contact Number</th>
+
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+    </div>
+    </div>
+    <button onclick="myfunction();">Click here to view Students feedback &#8595</button>
+    </div>
+
+    <script>
+        function myfunction() {
+            window.location = "retriveFeedback.html"
+        }
+    </script>
+
+    <script type="module">
+        //******filling the table*********//
+        var stdNo = 0;
+        var tbody = document.getElementById('tbody1');
+
+        // function to add items to table
+        function AdditemToTable(StudentID, StudentName, TravelsName, TName, DestinArea, CCity, DDuration, DDate, PayDetails, PayStatus, ConNumber) {
+            let trow = document.createElement("tr");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let td3 = document.createElement("td");
+            let td4 = document.createElement("td");
+            let td5 = document.createElement("td");
+            let td6 = document.createElement("td");
+            let td7 = document.createElement("td");
+            let td8 = document.createElement("td");
+            let td9 = document.createElement("td");
+            let td10 = document.createElement("td");
+            let td11 = document.createElement("td");
+            let td12 = document.createElement("td");
+
+            td1.innerHTML = ++stdNo;
+            td2.innerHTML = StudentID;
+            td3.innerHTML = StudentName;
+            td4.innerHTML = TravelsName;
+            td5.innerHTML = TName;
+            td6.innerHTML = DestinArea;
+            td7.innerHTML = CCity;
+            td8.innerHTML = DDuration;
+            td9.innerHTML = DDate;
+            td10.innerHTML = PayDetails;
+            td11.innerHTML = PayStatus;
+            td12.innerHTML = ConNumber;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            trow.appendChild(td6);
+            trow.appendChild(td7);
+            trow.appendChild(td8);
+            trow.appendChild(td9);
+            trow.appendChild(td10);
+            trow.appendChild(td11);
+            trow.appendChild(td12);
+
+            tbody.appendChild(trow);
+        }
+
+        //Adding data to respective fields    
+        function AddAllitemToTable(TheStudents) {
+            stdNo = 0;
+            tbody.innerHTML = "";
+            TheStudents.forEach(element => {
+                AdditemToTable(element.Id, element.Name, element.Travelsname, element.Tname, element.Location, element.City, element.Duration, element.Datee, element.Payment, element.Paystatus, element.Contact);
+            });
+        }
+
+        // adding firebase
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGCxYPsLRCaOhR7ukccLbdJVwplVpzrHM",
+            authDomain: "booktransport-d6403.firebaseapp.com",
+            databaseURL: "https://booktransport-d6403-default-rtdb.firebaseio.com",
+            projectId: "booktransport-d6403",
+            storageBucket: "booktransport-d6403.appspot.com",
+            messagingSenderId: "750729070485",
+            appId: "1:750729070485:web:63ebf5424c414a7d7fd89c"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, child, onValue, get }
+            from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+        const db = getDatabase();
+
+
+        //*******GETTING ALL DATA*********//
+        function GetallDataOnce() {
+            const dbref = ref(db);
+
+            get(child(dbref, "TheStudents"))
+                .then((snapshot) => {
+                    var event = [];
+
+                    snapshot.forEach(childSnapshot => {
+                        event.push(childSnapshot.val());
+                    });
+
+                    AddAllitemToTable(event);
+                })
+        }
+        //    function to get data at realtime
+        function GetAllDataRealtime() {
+            const dbref = ref(db, "TheStudents");
+
+            onValue(dbref, (snapshot) => {
+                var event = [];
+
+                snapshot.forEach(childSnapshot => {
+                    event.push(childSnapshot.val());
+                });
+                AddAllitemToTable(event);
+            })
+        }
+        window.onload = GetAllDataRealtime;
+
+    </script>
+</body>
+
+</html>

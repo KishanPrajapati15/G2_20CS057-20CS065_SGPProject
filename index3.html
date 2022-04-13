@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>University Hostel & Transport </title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    <!-- Linking css -->
+    <link rel="stylesheet" type="text/css" href="index3.css">
+</head>
+
+<body>
+
+    <div id="content_container">
+
+        <div id="form_container">
+            <div id="form_header_container">
+                <h2 id="form_header"> Log in &#x2193; </h2>
+            </div>
+
+            <div id="form_content_container">
+                <div id="form_content_inner_container">
+                    <!-- textboxes to enter details -->
+                    <!-- <input type="text" id="full_name" placeholder="Full name"> -->
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="Password">
+
+                    <!-- <input type="text" id="mobile_number" placeholder="Mobile Number"> -->
+
+                    <div id="button_container">
+                        <!-- <button onclick="login() ">Login</button> -->
+                        <!-- <button id ="regbutton" onclick="register()">Register</button>  
+                        <button id = "myfunbutton" onclick="myfunction()">Already Registered/Sign in</button> -->
+                        <div>
+                            <button id="Submit" onclick="login()">Log in </button> 
+                        </div>  
+                        <!-- <div>
+                        <button id="Delete" onclick="">Already registered ?</button>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- adding firebase  -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+<script src="index3.js"></script>
+
+
+</html>

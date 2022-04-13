@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            /* background-image: linear-gradient(rgba(0, 219, 248, 0.952),rgba(0, 219, 248, 0.541)); */
+        }
+
+        h2 {
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-style: oblique;
+        }
+
+        body {
+            padding: 40px 40px 40px 40px;
+            /* box-shadow: 0 5px 16px -8px black;
+            box-shadow:5px 5px 5px black; */
+            /* background-color: bisque; */
+            width: 100%;
+            height: 100%;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            background-color: rgba(48, 188, 223, 0.781);
+
+        }
+
+        li {
+            margin-left: 50px;
+            margin-right: 20px;
+        }
+
+        ul {
+            width: 700px;
+            /* background-color: rgb(0, 68, 255); */
+            border-radius: 5px;
+
+
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: large;
+
+            box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.651);
+            /* box-shadow:  7px 16px -8px black; */
+            border-radius: 10px;
+            padding-bottom: 15px;
+            padding-top: 7px;
+            margin-bottom: 20px;
+
+            background-image: linear-gradient(rgba(43, 89, 226, 0.53), rgba(62, 51, 214, 0.548));
+            /* background-color: rgba(137, 43, 226, 0.493); */
+        }
+
+        /* .div1{
+            background-color: rgb(4, 0, 255);
+        } */
+        h1 {
+            padding-left: 10px;
+            font-family: Geneva, Tahoma, sans-serif;
+            font-style: oblique;
+            font-weight: bolder;
+            box-shadow: 5px 5px rgba(31, 29, 29, 0.596);
+            border-radius: 6px;
+        }
+
+        button {
+            color: rgba(19, 11, 19, 0.774);
+            border-radius: 7px;
+            padding: 10px 20px 20px 20px;
+            margin-top: 7px;
+            margin-bottom: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+            /* background-color: #f0f0e9; */
+            cursor: pointer;
+            width: 100%;
+            /* box-shadow: 0 9px 16px -8px black; */
+            letter-spacing: 1px;
+            box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.651);
+            background-image: linear-gradient(rgba(43, 89, 226, 0.888), rgba(62, 51, 214, 0.886));
+        }
+
+        button:hover {
+            background-color: rgb(42, 231, 102);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>All Transport Details</h1>
+        <ul id="list">
+
+        </ul>
+
+        <button onclick="myfunction();">Book Seat</button> <br>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        //  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDlHexx5dqk8-0TLK1Q1ZBYpPONvfdzYQI",
+            authDomain: "page2-240cc.firebaseapp.com",
+            databaseURL: "https://page2-240cc-default-rtdb.firebaseio.com",
+            projectId: "page2-240cc",
+            storageBucket: "page2-240cc.appspot.com",
+            messagingSenderId: "732812639511",
+            appId: "1:732812639511:web:299e001aea6f5a7a818b52"
+        };
+
+        // Initialize Firebase
+        //const app = initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
+
+        //import { getDatabase, ref, get, set, child, update, remove }
+        //     from "https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js";
+
+        var stdNo = 0;
+        function addItemsToList(travelsName, city, busType, ratesBus, pickupPoint, refundPolicy, timeDuration) {
+            var ul = document.getElementById('list');
+            var header = document.createElement('h2');
+
+            var _TravelsName = document.createElement('li');
+            var _City = document.createElement('li');
+            var _BusType = document.createElement('li');
+            var _RatesBus = document.createElement('li');
+            var _PickupPoint = document.createElement('li');
+            var _RefundPolicy = document.createElement('li');
+            var _TimeDuration = document.createElement('li');
+
+            header.innerHTML = 'Transport - ' + (++stdNo);
+
+            _TravelsName.innerHTML = 'Name OF Travels: ' + travelsName;
+            _City.innerHTML = 'City Name: ' + city;
+            _BusType.innerHTML = 'Bus Type: ' + busType;
+            _RatesBus.innerHTML = 'Rates: ' + ratesBus;
+            _PickupPoint.innerHTML = 'PickUp Locations: ' + pickupPoint;
+            _RefundPolicy.innerHTML = 'Refund Policy: ' + refundPolicy;
+            _TimeDuration.innerHTML = 'Time Duration: ' + timeDuration;
+
+            ul.appendChild(header);
+            ul.appendChild(_TravelsName);
+            ul.appendChild(_City);
+            ul.appendChild(_BusType);
+            ul.appendChild(_RatesBus);
+            ul.appendChild(_PickupPoint);
+            ul.appendChild(_RefundPolicy);
+            ul.appendChild(_TimeDuration);
+
+        }
+
+        function FetchAllData() {
+            firebase.database().ref('Transport').once('value', function (snapshot) {
+                snapshot.forEach(
+                    function (ChildSnapshot) {
+                        let travelsName = ChildSnapshot.val().TravelsName;
+                        let city = ChildSnapshot.val().City;
+                        let busType = ChildSnapshot.val().BusType;
+                        let ratesBus = ChildSnapshot.val().RatesBus;
+                        let pickupPoint = ChildSnapshot.val().PickupPoint;
+                        let refundPolicy = ChildSnapshot.val().RefundPolicy;
+                        let timeDuration = ChildSnapshot.val().TimeDuration;
+
+                        addItemsToList(travelsName, city, busType, ratesBus, pickupPoint, refundPolicy, timeDuration);
+
+                    }
+                );
+            });
+        }
+
+        window.onload = FetchAllData;
+
+    </script>
+    <script>
+        //functions for page redirection
+        function myfunction() {
+            window.location = "booktransport.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
